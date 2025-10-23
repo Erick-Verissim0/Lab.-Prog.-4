@@ -5,7 +5,7 @@ import { colors } from "../styles/global";
 export default function Footer() {
   return (
     <View style={styles.footer}>
-      <Text style={styles.text}>© 2025 FitLife</Text>
+      <Text style={styles.text}>© 2025 Novo Verão</Text>
     </View>
   );
 }

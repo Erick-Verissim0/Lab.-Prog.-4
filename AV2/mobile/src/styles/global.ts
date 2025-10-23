@@ -13,6 +13,7 @@ export const colors = {
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: "#f5f5f5",
+    padding: 16,
   },
 });
