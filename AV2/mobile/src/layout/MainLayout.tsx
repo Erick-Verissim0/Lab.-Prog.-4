@@ -1,9 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { View, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { colors } from "../styles/global";
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+type MainLayoutProps = {
+  children?: ReactNode;
+};
+
+export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <View style={styles.container}>
       <Header />
@@ -16,7 +21,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f6fa",
+    backgroundColor: colors.background,
   },
   content: {
     flex: 1,

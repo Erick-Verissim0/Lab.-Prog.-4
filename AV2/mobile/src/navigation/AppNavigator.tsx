@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AuthContext } from "../context/AuthContext";
+
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
 import CartScreen from "../screens/CartScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import { AuthContext } from "../context/AuthContext";
 
 export type RootStackParamList = {
   Login: undefined;
@@ -21,7 +22,7 @@ export default function AppNavigator() {
   const { user } = useContext(AuthContext);
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {user ? (
         <>
           <Stack.Screen name="Home" component={HomeScreen} />
@@ -30,11 +31,7 @@ export default function AppNavigator() {
           <Stack.Screen name="Profile" component={ProfileScreen} />
         </>
       ) : (
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="Login" component={LoginScreen} />
       )}
     </Stack.Navigator>
   );

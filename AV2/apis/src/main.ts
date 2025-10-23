@@ -1,3 +1,4 @@
+import cors from 'cors';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './application/modules/app.module';
 import { setupSwagger } from './infraestructure/config/swagger/setup';
@@ -11,6 +12,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const prefix = 'api';
   setupSwagger(prefix, app);
+
+  app.use(
+    cors({
+      origin: 'http://localhost:8081',
+      methods: ['POST'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+  );
 
   app.useGlobalPipes(new ValidationPipe());
 
